@@ -4,7 +4,7 @@ enable_dir = "right"
 axis1_redstone_dir = "left"
 
 motor_speed = 32
-axis1_steps = 7
+axis1_steps = 6
 axis1_step_length = 3
 axis2_length = 15 * 10
 
