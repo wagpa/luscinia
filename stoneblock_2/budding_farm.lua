@@ -10,19 +10,6 @@ axis2_length = 15
 wait_until_retry = 60
 wait_until_next = 60
 
--- start next harvesting
-while true do
-    if redstone.getInput(enable_dir) then
-        print("Enabled, starting harvest")
-        harvest()
-        sleep(wait_until_next)
-    else
-        -- check again later
-        print("Disabled, trying again later")
-        sleep(wait_until_retry)
-    end
-end
-
 axis1_pos = 0
 
 function harvest()
@@ -50,4 +37,17 @@ function harvest()
     sleep(motor.translate(-axis1_length, 32))
 
     motor.stop()
+end
+
+-- start next harvesting
+while true do
+    if redstone.getInput(enable_dir) then
+        print("Enabled, starting harvest")
+        harvest()
+        sleep(wait_until_next)
+    else
+        -- check again later
+        print("Disabled, trying again later")
+        sleep(wait_until_retry)
+    end
 end
