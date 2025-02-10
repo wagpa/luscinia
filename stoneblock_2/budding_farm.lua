@@ -3,9 +3,10 @@ motor_dir = "back"
 enable_dir = "right"
 axis1_redstone_dir = "left"
 
+motor_speed = 32
 axis1_steps = 7
 axis1_step_length = 2
-axis2_length = 15
+axis2_length = 15 * 10
 
 wait_until_retry = 60
 wait_until_next = 60
@@ -18,19 +19,19 @@ function harvest()
 
         -- move out and in
         redstone.setOutput(axis1_redstone_dir, true)
-        sleep(motor.translate(axis2_length, 32))
-        sleep(motor.translate(-axis2_length, 32))
+        sleep(motor.translate(axis2_length, motor_speed))
+        sleep(motor.translate(-axis2_length, motor_speed))
         sleep(1)
 
         -- move one left
         redstone.setOutput(axis1_redstone_dir, false)
-        sleep(motor.translate(axis1_step_length, 32))
+        sleep(motor.translate(axis1_step_length, motor_speed))
         sleep(1)
     end
 
     -- move back to start
     print("Harvested, moving back to start")
-    sleep(motor.translate(-axis1_steps * axis1_step_length, 32))
+    sleep(motor.translate(-axis1_steps * axis1_step_length, motor_speed))
 
     motor.stop()
 end
