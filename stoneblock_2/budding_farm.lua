@@ -9,7 +9,7 @@ axis1_step_length = 3
 axis2_length = 15 * 10
 
 wait_until_retry = 60
-wait_until_next = 60
+wait_until_next = 60 * 10
 
 function harvest()
     local motor = peripheral.wrap(motor_dir)
