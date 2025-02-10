@@ -4,7 +4,7 @@ enable_dir = "right"
 axis1_redstone_dir = "left"
 
 axis1_steps = 7
-axis1_step_length = 3
+axis1_step_length = 2
 axis2_length = 15
 
 wait_until_retry = 60
