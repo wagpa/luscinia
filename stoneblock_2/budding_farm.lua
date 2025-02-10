@@ -12,7 +12,7 @@ wait_until_next = 60
 
 -- start next harvesting
 while true do
-    if redstone.getInput(level_dir) then
+    if redstone.getInput(enable_dir) then
         print("Enabled, starting harvest")
         harvest()
         sleep(wait_until_next)
