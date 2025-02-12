@@ -12,6 +12,10 @@ axis2_length = 15
 wait_until_retry = 60
 wait_until_next = 60 * 10
 
+function sign(x)
+    return (x < 0 and -1) or 1
+end
+
 function harvest()
     local motor = peripheral.wrap(motor_dir)
 
@@ -22,7 +26,7 @@ function harvest()
         -- move out until redstone signal as it might take longer for breaking the blocks
         redstone.setOutput(axis1_redstone_dir, true)
         while not redstone.getInput(axis2_redstone_dir) do
-            sleep(motor.translate(1, motor_speed))
+            sleep(motor.translate(sign(axis2_length) * 1, motor_speed))
         end
         sleep(motor.translate(-axis2_length, motor_speed))
 
