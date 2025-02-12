@@ -1,12 +1,13 @@
 -- settings
 motor_dir = "back"
-enable_dir = "right"
+enable_dir = "top"
 axis1_redstone_dir = "left"
+axis2_redstone_dir = "right"
 
 motor_speed = 32
 axis1_steps = 6
-axis1_step_length = 3
-axis2_length = 15 * 10
+axis1_step_length = -3
+axis2_length = 15
 
 wait_until_retry = 60
 wait_until_next = 60 * 10
@@ -18,8 +19,11 @@ function harvest()
         print("Harvesting step " .. step .. " of " .. axis1_steps)
 
         -- move out and in
+        -- move out until redstone signal as it might take longer for breaking the blocks
         redstone.setOutput(axis1_redstone_dir, true)
-        sleep(motor.translate(axis2_length, motor_speed))
+        while not redstone.getInput(axis2_redstone_dir) do
+            sleep(motor.translate(1, motor_speed))
+        end
         sleep(motor.translate(-axis2_length, motor_speed))
 
         -- move one right
