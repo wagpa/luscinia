@@ -7,7 +7,7 @@ axis2_redstone_dir = "right"
 motor_speed = 32
 axis1_steps = 6
 axis1_step_length = -3
-axis2_length = 15
+axis2_length = 16
 
 wait_until_retry = 60
 wait_until_next = 60 * 10
